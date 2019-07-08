@@ -5,6 +5,7 @@ const logger = require('morgan');
 
 const dbService = require('./src/services/dBService');
 global.Dish = require('./src/models/dishesModel');
+global.Place = require('./src/models/placesModel');
 const routes = require('./src/routes/setUpRoutes');
 
 const mongoose = dbService.connectToDB()
