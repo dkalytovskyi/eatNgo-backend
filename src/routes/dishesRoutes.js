@@ -1,4 +1,4 @@
-const dishBuilder = require('../controllers/DishesController');
+const dishBuilder = require('../controllers/dishesController');
 
 module.exports = app => {
   app
@@ -11,4 +11,8 @@ module.exports = app => {
     .get(dishBuilder.readDish)
     .put(dishBuilder.updateDish)
     .delete(dishBuilder.deleteDish);
+  
+  app
+    .route('/dishes/:filter/:count')
+    .get(dishBuilder.listFilteredDishes)
 };

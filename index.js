@@ -3,9 +3,9 @@ const cors = require('cors');
 const bodyParser = require('body-parser');
 const logger = require('morgan');
 
-const dbService = require('./src/services/db-service');
-global.Dish = require('./src/models/DishesModel');
-global.Place = require('./src/models/PlacesModel');
+const dbService = require('./src/services/dBService');
+global.Dish = require('./src/models/dishesModel');
+global.Place = require('./src/models/placesModel');
 const routes = require('./src/routes/setUpRoutes');
 
 const mongoose = dbService.connectToDB()

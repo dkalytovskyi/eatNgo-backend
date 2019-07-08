@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const {uri, dbName} = require('./db-parameters');
+const {uri, dbName} = require('./dBParameters');
 
 exports.connectToDB = () => {
     return new Promise((resolve, reject) => {

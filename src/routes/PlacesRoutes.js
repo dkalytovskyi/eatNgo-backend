@@ -1,4 +1,4 @@
-const placeBuilder = require('../controllers/PlacesController');
+const placeBuilder = require('../controllers/placesController');
 
 module.exports = app => {
   app

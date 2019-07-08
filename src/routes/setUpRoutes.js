@@ -1,5 +1,5 @@
-const routesDishes = require('./DishesRoutes');
-const routesPlaces = require('./PlacesRoutes');
+const routesDishes = require('./dishesRoutes');
+const routesPlaces = require('./placesRoutes');
 
 module.exports = app => {
     routesDishes(app);

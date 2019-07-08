@@ -1,52 +1,24 @@
 const mongoose = require('mongoose');
 const Place = mongoose.model('Place');
-const dbService = require('../services/db-service');
+const dbService = require('../services/dBService');
+const queryWrapper = require('../utils/queryWrapper')
 
-exports.listAllPlaces = async (req, res) => {
-    try {
-        const places = await dbService.getAllDataFromCollection(Place);
-        res.json(places);
-    }
-    catch(err) {
-      res.status(400).send(err);
-    }
+exports.listAllPlaces = async (req, res) => {  
+  queryWrapper(req, res, () => dbService.getAllDataFromCollection(Place));
 };
 
 exports.createPlace = async (req, res) => {
-    try {
-      const newPlace = await dbService.createElement(Place, req.body);
-      res.json(newPlace);
-    }
-    catch(err) {
-      res.status(400).send(err);
-    }
+  queryWrapper(req, res, () => dbService.createElement(Place, req.body))
 };
 
 exports.readPlace = async (req, res) => {
-  try {
-    const place = await dbService.getOneElementById(Place, req.params.placeId);
-    res.json(place);
-  }
-  catch(err) {
-    res.status(400).send(err);
-  }
+  queryWrapper(req, res, () => dbService.getOneElementById(Place, req.params.placeId))
 };
 
 exports.updatePlace = async (req, res) => {
-  try {
-    const updatedPlace = await dbService.updateOneElement(Place, req.params.placeId, req.body);
-    res.json(updatedPlace);
-  }
-  catch(err) {
-    res.status(400).send(err);
-  }
+  queryWrapper(req, res, () => dbService.updateOneElement(Place, req.params.placeId, req.body))
 };
+
 exports.deletePlace = async (req, res) => {
-  try {
-    const message = await dbService.deleteOneElement(Place, req.params.placeId);
-    res.json(message);
-  }
-  catch(err) {
-    res.status(400).send(err);
-  }
+  queryWrapper(req, res, () => dbService.deleteOneElement(Place, req.params.placeId))
 }
