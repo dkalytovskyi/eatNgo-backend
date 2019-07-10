@@ -24,11 +24,19 @@ exports.createElement = (model, params) => {
   }) 
 };
 exports.getOneElementById = (model, elementId) => {
-    return new Promise((resolve, reject) => {
-      model.findById(elementId, (err, element) => {
-        err ? reject(err) : resolve(element);
-      });
+  return new Promise((resolve, reject) => {
+    model.findById(elementId, (err, element) => {
+      err ? reject(err) : resolve(element);
     });
+  });
+};
+exports.getUserByEmail = (model, {email}) => {
+  return new Promise((resolve, reject) => {
+    model.findOne({ email: email }, (err, user) => {
+        err ? reject(err) : resolve(user);
+      }
+    );
+  });
 };
 exports.updateOneElement = (model, elemetId, params) => {
   return new Promise((resolve, reject) => {
