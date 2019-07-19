@@ -8,6 +8,8 @@ const filters = {
   rating: (a, b) => b.stars - a.stars, 
   minPrice: (a, b) => a.price - b.price,
   maxPrice: (a, b) => b.price - a.price,
+  nameASC: (a, b) => a.price > b.price,
+  nameDESC: (a, b) => a.price < b.price,
   unfiltered: () => {}
 };
 
