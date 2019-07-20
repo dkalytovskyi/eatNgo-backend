@@ -8,20 +8,28 @@ const usersSchema = new Schema(
       default: ""
     },
     lastName: {
-        type: String, 
-        default: ""
+      type: String,
+      default: ""
     },
     email: {
       type: String,
       required: 'email cannot be blank'
     },
     password: {
-        type: String,
-        required: 'password cannot be blank'
+      type: String,
+      required: 'password cannot be blank'
     },
-    phoneNumber : {
-      type: String, 
+    phoneNumber: {
+      type: String,
       default: ""
+    },
+    confirm: {
+      type: Boolean,
+      default: false
+    },
+    userImage: {
+        type: String,
+        default: ""
     }
   },
   { collection: 'users' }
