@@ -7,6 +7,7 @@ const dbService = require('./src/services/dBService');
 global.Dish = require('./src/models/dishesModel');
 global.Place = require('./src/models/placesModel');
 global.User = require('./src/models/usersModel');
+global.specialOffers = require('./src/models/specialOffersModel');
 const routes = require('./src/routes/setUpRoutes');
 
 const mongoose = dbService.connectToDB()
