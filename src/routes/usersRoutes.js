@@ -8,6 +8,10 @@ module.exports = app => {
     .route('/authenticate')
     .post(user.authenticate);
   app
+    .route('/users') 
+    .get(user.getUserInfo)
+    .put(user.updateUserInfo)
+  app
     .route('/verify/:code')
     .get(user.verification)
 };

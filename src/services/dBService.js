@@ -37,21 +37,10 @@ exports.getOneElementByField = (model, field) => {
     });
   });
 };
-exports.updateOneElement = (model, elemetId, params) => {
+exports.updateElement = (model, field, params) => {
   return new Promise((resolve, reject) => {
     model.findOneAndUpdate(
-      { _id: elemetId },
-      params,
-      { new: true },
-      (err, element) => {
-        err ? reject(err) : resolve(element);
-      });
-  });
-};
-exports.updateElement = (model, data, params) => {
-  return new Promise((resolve, reject) => {
-    model.findOneAndUpdate(
-      { email: data },
+      field,
       params,
       { new: true },
       (err, element) => {
