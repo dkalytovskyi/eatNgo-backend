@@ -15,21 +15,21 @@ const usersSchema = new Schema(
       type: String,
       required: 'email cannot be blank'
     },
-    password: {
-      type: String,
-      required: 'password cannot be blank'
-    },
-    phoneNumber: {
-      type: String,
-      default: ""
-    },
     confirm: {
       type: Boolean,
       default: false
     },
+    password: {
+      type: String,
+      required: 'password cannot be blank'
+    },
+    phoneNumber : {
+      type: String, 
+      default: ""
+    },
     userImage: {
-        type: String,
-        default: ""
+      type: String,
+      default: ""
     }
   },
   { collection: 'users' }
