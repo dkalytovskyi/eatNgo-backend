@@ -27,12 +27,40 @@ function validateRequestNumber(number, maxNumber) {
   return number;
 }
 
+function putInOrder({
+  _id,
+  name,
+  price,
+  stars, 
+  image,
+  ingradients,
+  optionalIngredients
+}) {
+  const optional = optionalIngredients.reduce((acc, curr) => {
+    return {...acc, 
+      [curr]: {disabled: false, checked: true}
+    };
+  }, {});
+  const required = ingradients.reduce((acc, curr) => {
+    return {...acc, 
+      [curr]: {disabled: true, checked: true}
+    };
+  }, {});
+  return { _id, name, price, stars, image, 
+    ingredients: {
+      ...required, ...optional
+    }
+  };
+};
+
 async function dishesList(req) {
   const filter = validateRequestFilter(req.params.filter);
   const allData = await dbService.getAllDataFromCollection(Dish);
   const count = validateRequestNumber(req.params.count, allData.length);
   const sortedData = allData.sort(filters[filter]);
-  return sortedData.slice(0, count);
+  const requiredData = sortedData.slice(0, count);
+  const dishes = requiredData.map(value => putInOrder(value));
+  return dishes;
 }
 
 exports.listAllDishes = (req, res) => {
