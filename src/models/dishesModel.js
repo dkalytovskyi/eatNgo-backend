@@ -11,6 +11,10 @@ const DishesSchema = new Schema(
         type: Array, 
         default: []
     },
+    optionalIngredients: {
+      type: Array, 
+      default: []
+    },
     price: {
       type: Number,
       default: 10
