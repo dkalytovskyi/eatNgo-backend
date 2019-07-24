@@ -8,6 +8,8 @@ const filters = {
   rating: (a, b) => b.stars - a.stars, 
   minPrice: (a, b) => a.price - b.price,
   maxPrice: (a, b) => b.price - a.price,
+  nameASC: (a, b) => a.name > b.name,
+  nameDESC: (a, b) => b.name > a.name,
   unfiltered: () => {}
 };
 
@@ -33,6 +35,7 @@ function putInOrder({
   price,
   stars, 
   image,
+  category,
   ingradients,
   optionalIngredients
 }) {
@@ -46,7 +49,7 @@ function putInOrder({
       [curr]: {disabled: true, checked: true}
     };
   }, {});
-  return { _id, name, price, stars, image, 
+  return { _id, name, price, stars, image, category,
     ingredients: {
       ...required, ...optional
     }

@@ -30,6 +30,10 @@ const DishesSchema = new Schema(
     image: {
       type: String, 
       required: 'image cannot be blank'
+    },
+    category: {
+      type: Array, 
+      default: []
     }
   },
   { collection: 'dishes' }
