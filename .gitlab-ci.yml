@@ -16,10 +16,8 @@ deploy_staging:
     - git push -f heroku master
     - echo "Deployed to staging server"
   environment:
-  name: staging
-  url: https://eatngo.herokuapp.com/
   only:
-    - dev
+    - feature/EATNGO-CI
 
 deploy_production:
   stage: deploy
@@ -28,8 +26,6 @@ deploy_production:
     - git push -f heroku master
     - echo "Deployed to production server"
   environment:
-  name: production
-  url: https://eatngoprod.herokuapp.com/
   when: manual
   only:
-    - dev
+    - feature/EATNGO-CI
