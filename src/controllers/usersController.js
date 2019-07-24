@@ -31,8 +31,8 @@ async function registerNewUser(User, req) {
 async function verificationEmail(req, res) {
   const email = getOriginUserEmail(req.params.code);
   const user = await dbService.getOneElementByField(User, { email });
-  const confirmation = user ? await dbService.updateElement(User, {email}, { confirm: true }) : 'User does not exists'
-  if (confirmation) return res.redirect('http://localhost:3000/login');
+  const confirmation = user ? await dbService.updateElement(User, { email }, { confirm: true }) : 'User does not exists'
+  if (confirmation) return res.redirect('https://eatngo-fbbeb.firebaseapp.com/login');
   return confirmation;
 }
 
@@ -54,7 +54,7 @@ const errMessages = {
 };
 
 const errors = {
-  [errMessages.unloggined]: 401, 
+  [errMessages.unloggined]: 401,
   [errMessages.incorrectPassword]: 400
 };
 
@@ -65,7 +65,7 @@ function errHandler(err, res) {
 
 function confirmAuth(req) {
   const authHeader = req.headers.authorization;
-  if(!authHeader) throw new Error (errMessages.unloggined);
+  if (!authHeader) throw new Error(errMessages.unloggined);
   return authHeader;
 }
 
@@ -77,13 +77,13 @@ function getUserEmail(authHeader) {
 async function getUserInfo(req) {
   const authHeader = confirmAuth(req);
   const email = getUserEmail(authHeader);
-  const user = await dbService.getOneElementByField(User, {email});
-  return user;        
+  const user = await dbService.getOneElementByField(User, { email });
+  return user;
 }
 
 const updateUser = {
-  email: updateEmail, 
-  password: updatePassword, 
+  email: updateEmail,
+  password: updatePassword,
   default: updateInfo
 }
 
@@ -91,19 +91,19 @@ async function updateEmail(host, newEmail, email) {
   const code = createConfirmCode(newEmail);
   const link = `http://${host}/verify/${code}`;
   const info = await sendEmail(newEmail, changeEmailLetter(link));
-  return dbService.updateElement(User, {email}, {email: newEmail, confirm: false});
+  return dbService.updateElement(User, { email }, { email: newEmail, confirm: false });
 }
 
 async function updatePassword(password, prevPassword, email) {
-  const user = await dbService.getOneElementByField(User, {email});
+  const user = await dbService.getOneElementByField(User, { email });
   const plainPassword = cryptor.deCryptPassword(user.password);
-  if(plainPassword !== prevPassword) throw new Error (errMessages.incorrectPassword);
+  if (plainPassword !== prevPassword) throw new Error(errMessages.incorrectPassword);
   const cryptPassword = cryptor.enCryptPassword(password).toString();
-  return dbService.updateElement(User, {email}, {password: cryptPassword});
+  return dbService.updateElement(User, { email }, { password: cryptPassword });
 }
 
-async function updateInfo (obj, email) {
-  return dbService.updateElement(User, {email}, obj);
+async function updateInfo(obj, email) {
+  return dbService.updateElement(User, { email }, obj);
 }
 
 async function updateUserInfo(req) {
@@ -113,9 +113,9 @@ async function updateUserInfo(req) {
 
   const { data } = req.body;
   const { email: newEmail, password, prevPassword } = data;
-  const updatedUser = newEmail ? await updateUser.email(host, newEmail, email) : 
-                      password ? await updateUser.password(password, prevPassword, email) :
-                      await updateUser.default(data, email);
+  const updatedUser = newEmail ? await updateUser.email(host, newEmail, email) :
+    password ? await updateUser.password(password, prevPassword, email) :
+      await updateUser.default(data, email);
   return updatedUser;
 }
 
