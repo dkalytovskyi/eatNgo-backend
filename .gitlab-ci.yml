@@ -1,13 +1,5 @@
 stages:
-  - init
   - deploy
-
-init:
-  stage: init
-  script:
-    - yarn cache clean
-    - rm -rf node-modules
-    - yarn install
 
 deploy_staging:
   stage: deploy
