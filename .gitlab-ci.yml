@@ -10,5 +10,5 @@ deploy_staging:
     - git push -f heroku HEAD:master
     - echo "Deployed to staging server"
   only:
-    - feature/EATNGO-CI
-    
+    - dev
+
