@@ -11,3 +11,4 @@ deploy_staging:
     - echo "Deployed to staging server"
   only:
     - feature/EATNGO-CI
+    
