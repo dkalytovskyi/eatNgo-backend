@@ -1,35 +1,14 @@
 stages:
-  - init
   - deploy
-
-init:
-  stage: init
-  script:
-    - npm cache clean
-    - rm -rf node-modules
-    - npm install
 
 deploy_staging:
   stage: deploy
+  tags: 
+  - gitlab-org
   script:
     - git remote add heroku https://heroku:$HEROKU_API_KEY@git.heroku.com/eatngo.git
-    - git push -f heroku master
+    - git push -f heroku HEAD:master
     - echo "Deployed to staging server"
-  environment:
-  name: staging
-  url: https://eatngo.herokuapp.com/
   only:
     - dev
 
-deploy_production:
-  stage: deploy
-  script:
-    - git remote add heroku https://heroku:$HEROKU_API_KEY@git.heroku.com/eatngoprod.git
-    - git push -f heroku master
-    - echo "Deployed to production server"
-  environment:
-  name: production
-  url: https://eatngoprod.herokuapp.com/
-  when: manual
-  only:
-    - dev
