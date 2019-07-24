@@ -5,9 +5,9 @@ stages:
 init:
   stage: init
   script:
-    - npm cache clean
+    - yarn cache clean
     - rm -rf node-modules
-    - npm install
+    - yarn install
 
 deploy_staging:
   stage: deploy
