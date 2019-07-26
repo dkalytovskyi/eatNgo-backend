@@ -12,6 +12,7 @@ const constructOrderObject = order => {
         return dish;
     })
     order.tables.date = new Date(order.tables.date);
+
     return order;
 }
 
