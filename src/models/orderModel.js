@@ -11,6 +11,14 @@ const OrderSchema = new Schema({
         name: {
             type: String,
             required: required
+        },
+        location: {
+            type: String,
+            required: 'location must be'
+        },
+        imageSrc: {
+            type: String,
+            required: 'image cannot be blank'
         }
     },
 

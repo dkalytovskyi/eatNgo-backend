@@ -3,6 +3,10 @@ const {Schema} = mongoose;
 
 const PlaceSchema = new Schema(
     {
+        name: {
+            type: String,
+            required: 'location must be'
+        },
         location: {
             type: String,
             required: 'location must be'
@@ -11,7 +15,7 @@ const PlaceSchema = new Schema(
             type: String,
             required: 'have to type working hours for example 8am-10pm'
         },
-        image: {
+        imageSrc: {
             type: String,
             required: 'image cannot be blank'
         }
