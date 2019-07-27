@@ -71,6 +71,11 @@ const OrderSchema = new Schema({
     payment: {
         type: Boolean,
         required: required
+    },
+
+    userEmail: {
+        type: String,
+        default: null
     }
 }, 
 {collection: 'orders'}
