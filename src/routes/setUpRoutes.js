@@ -4,6 +4,7 @@ const routesTables = require('./tablesRoutes');
 const routesUsers = require('./usersRoutes');
 const routeSpecialOffers = require('./specialOffersRouters');
 const routesOrder = require('./orderRoutes');
+const routesUserOrders = require('./userOrdersRoutes');
 
 module.exports = app => {
     routesDishes(app);
@@ -12,4 +13,5 @@ module.exports = app => {
     routeSpecialOffers(app);
     routesOrder(app);
     routesTables(app);
+    routesUserOrders(app);
 }

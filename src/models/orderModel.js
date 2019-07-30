@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const {Schema} = mongoose;
+const { Schema } = mongoose;
 const required = 'has to be filled';
 
 const OrderSchema = new Schema({
@@ -61,6 +61,10 @@ const OrderSchema = new Schema({
             type: Number,
             default: 3
         },
+        ratingUser: {
+            type: Number,
+            default: 0
+        },
         totalPrice: {
             type: Number,
             default: 0
@@ -85,8 +89,8 @@ const OrderSchema = new Schema({
         type: String,
         default: null
     }
-}, 
-{collection: 'orders'}
+},
+    { collection: 'orders' }
 );
 
 module.exports = mongoose.model('Order', OrderSchema);

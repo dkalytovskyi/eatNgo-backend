@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const {Schema} = mongoose;
+const { Schema } = mongoose;
 
 const DishesSchema = new Schema(
   {
@@ -8,11 +8,11 @@ const DishesSchema = new Schema(
       required: 'name cannot be blank'
     },
     ingradients: {
-        type: Array, 
-        default: []
+      type: Array,
+      default: []
     },
     optionalIngredients: {
-      type: Array, 
+      type: Array,
       default: []
     },
     price: {
@@ -20,21 +20,25 @@ const DishesSchema = new Schema(
       default: 10
     },
     isDeleted: {
-        type: Boolean, 
-        default: false
+      type: Boolean,
+      default: false
     },
-    stars : {
-      type: Number, 
+    stars: {
+      type: Number,
       default: 0
-    }, 
+    },
     image: {
-      type: String, 
+      type: String,
       required: 'image cannot be blank'
     },
     category: {
-      type: Array, 
+      type: Array,
       default: []
-    }
+    },
+    estimationPeople: {
+      type: Number,
+      default: 0
+    },
   },
   { collection: 'dishes' }
 );

@@ -15,6 +15,13 @@ exports.getAllDataFromCollection = (model) => {
     });
   });
 };
+exports.getAllDataFromCollectionItem = (model, field) => {
+  return new Promise((resolve, reject) => {
+    model.find({ '_id': { $in: field } }, (err, arrId) => {
+      err ? reject(err) : resolve(arrId);
+    });
+  });
+};
 exports.createElement = (model, params) => {
   return new Promise((resolve, reject) => {
     const newElement = new model(params);
@@ -37,6 +44,25 @@ exports.getOneElementByField = (model, field) => {
     });
   });
 };
+exports.getAllElementByField = (model, field) => {
+  return new Promise((resolve, reject) => {
+    model.find(field, (err, element) => {
+      err ? reject(err) : resolve(element);
+    });
+  });
+};
+
+exports.findByIdAndUpdate = (model, field, params) => {
+  return new Promise((resolve, reject) => {
+    model.findByIdAndUpdate(
+      field,
+      params,
+      { new: true },
+      (err, element) => {
+        err ? reject(err) : resolve(element);
+      });
+  });
+}
 exports.updateElement = (model, field, params) => {
   return new Promise((resolve, reject) => {
     model.findOneAndUpdate(
