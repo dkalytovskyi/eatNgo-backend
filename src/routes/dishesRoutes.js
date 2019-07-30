@@ -13,6 +13,6 @@ module.exports = app => {
     .delete(dishBuilder.deleteDish);
   
   app
-    .route('/dishes/:filter/:count')
+    .route('/dishes/:filter/:count/:category')
     .get(dishBuilder.listFilteredDishes)
 };
