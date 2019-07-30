@@ -6,9 +6,10 @@ const queryWrapper = require('../utils/queryWrapper');
 const constructOrderObject = order => {
     //We get _id of restaurants from frontend, but in order to keep it real id of restaurant, we are going to
     //change it to mongoose ObjectId
+    console.log(order);
     order.restaurants._id = mongoose.Types.ObjectId(order.restaurants._id);
     order.dishes.map(dish => {
-        dish.id = mongoose.Types.ObjectId(dish.id);
+        dish._id = mongoose.Types.ObjectId(dish._id);
         return dish;
     })
     order.tables.date = new Date(order.tables.date);
