@@ -24,7 +24,7 @@ const OrderSchema = new Schema({
 
     tables: {
         id: {
-            type: Number,
+            type: String,
             required: required
         },
         date: {
@@ -41,7 +41,7 @@ const OrderSchema = new Schema({
         }
     },
     dishes: [{
-        id: {
+        _id: {
             type: mongoose.Types.ObjectId,
             required: required
         },
@@ -57,7 +57,7 @@ const OrderSchema = new Schema({
             type: Number,
             required: required
         },
-        rating: {
+        stars: {
             type: Number,
             default: 3
         },
