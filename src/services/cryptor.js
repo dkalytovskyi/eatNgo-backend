@@ -1,6 +1,6 @@
 const CryptoJS = require("crypto-js");
 
-const defaultSecret = 'newSecret';
+exports.defaultSecret = 'newSecret';
 
 exports.enCryptPassword = (password, secret = defaultSecret) => {
     const ciphertext = CryptoJS.AES.encrypt(password, secret);
