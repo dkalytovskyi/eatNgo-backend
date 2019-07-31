@@ -11,8 +11,7 @@ const constructOrderObject = order => {
     order.dishes.map(dish => {
         dish._id = mongoose.Types.ObjectId(dish._id);
         return dish;
-    })
-    order.tables.date = new Date(order.tables.date);
+    });
     return order;
 }
 
