@@ -14,4 +14,10 @@ module.exports = app => {
   app
     .route('/verify/:code')
     .get(user.verification)
+  app
+    .route('/forgotPassword')
+    .post(user.sendEmailToResetPassw)
+  app
+    .route('/reset')
+    .post(user.resetPassword)
 };
