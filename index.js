@@ -10,6 +10,7 @@ global.User = require('./src/models/usersModel');
 global.specialOffers = require('./src/models/specialOffersModel');
 global.Order = require('./src/models/orderModel');
 global.Tables = require('./src/models/tablesModel');
+global.Admin = require('./src/models/adminModel');
 const routes = require('./src/routes/setUpRoutes');
 
 const mongoose = dbService.connectToDB()

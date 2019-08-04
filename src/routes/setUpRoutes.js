@@ -5,6 +5,7 @@ const routesUsers = require('./usersRoutes');
 const routeSpecialOffers = require('./specialOffersRouters');
 const routesOrder = require('./orderRoutes');
 const routesUserOrders = require('./userOrdersRoutes');
+const routesAdmin = require('./adminRoutes');
 
 module.exports = app => {
     routesDishes(app);
@@ -14,4 +15,5 @@ module.exports = app => {
     routesOrder(app);
     routesTables(app);
     routesUserOrders(app);
+    routesAdmin(app);
 }
