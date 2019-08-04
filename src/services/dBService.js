@@ -76,9 +76,8 @@ exports.updateElement = (model, field, params) => {
 };
 exports.deleteOneElement = (model, name) => {
   return new Promise((resolve, reject) => {
-    model.findOneAndUpdate(
+    model.deleteOne(
       { name: name },
-      { isDeleted: true },
       err => {
         err ? reject(err) : resolve('User successfully deleted');
       });
