@@ -74,10 +74,10 @@ exports.updateElement = (model, field, params) => {
       });
   });
 };
-exports.deleteOneElement = (model, name) => {
+exports.deleteOneElement = (model, _id) => {
   return new Promise((resolve, reject) => {
     model.deleteOne(
-      { name: name },
+      { '_id': _id },
       err => {
         err ? reject(err) : resolve('User successfully deleted');
       });

@@ -104,7 +104,7 @@ exports.readDish = async (req, res) => {
 };
 
 exports.updateDish = async (req, res) => {
-  queryWrapper(req, res, () => dbService.updateOneElement(Dish, req.params.dishId, req.body));
+  queryWrapper(req, res, () => dbService.findByIdAndUpdate(Dish, req.params.dishId, req.body));
 };
 
 exports.deleteDish = async (req, res) => {
