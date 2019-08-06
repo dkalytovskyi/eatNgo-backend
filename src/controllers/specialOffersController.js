@@ -16,7 +16,7 @@ exports.readSpecialOffers = async (req, res) => {
 };
 
 exports.updateSpecialOffers = async (req, res) => {
-  queryWrapper(req, res, () => dbService.updateOneElement(specialOffers, req.params.specialOffersId, req.body));
+  queryWrapper(req, res, () => dbService.findByIdAndUpdate(specialOffers, req.params.specialOffersId, req.body));
 };
 
 exports.deleteSpecialOffers = async (req, res) => {
