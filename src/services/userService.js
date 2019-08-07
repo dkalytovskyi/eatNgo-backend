@@ -56,9 +56,9 @@ async function updateEmail(host, newEmail, email) {
 
 async function updatePassword(password, prevPassword, email) {
   const user = await dbService.getOneElementByField(User, { email });
-  const plainPassword = cryptor.deCryptPassword(user.password);
+  const plainPassword = cryptor.deCryptPassword(user.password, cryptor.defaultSecret);
   if (plainPassword !== prevPassword) throw new Error(errMessages.incorrectPassword);
-  const cryptPassword = cryptor.enCryptPassword(password).toString();
+  const cryptPassword = cryptor.enCryptPassword(password, cryptor.defaultSecret).toString();
   return dbService.updateElement(User, { email }, { password: cryptPassword });
 };
 
